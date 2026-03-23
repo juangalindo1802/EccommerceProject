@@ -19,6 +19,8 @@ type CheckoutSuccessPageProps = {
   searchParams: Promise<{ session_id?: string }>;
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function CheckoutSuccessPage({ searchParams }: CheckoutSuccessPageProps) {
   if (!isSupabaseConfigured()) redirect("/login");
   const { session_id: sessionId } = await searchParams;
@@ -77,4 +79,3 @@ export default async function CheckoutSuccessPage({ searchParams }: CheckoutSucc
     </main>
   );
 }
-

@@ -10,6 +10,8 @@ type AdminEditProductPageProps = {
   params: Promise<{ id: string }>;
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminEditProductPage({ params }: AdminEditProductPageProps) {
   const { id } = await params;
   const [product, categories] = await Promise.all([
@@ -51,4 +53,3 @@ export default async function AdminEditProductPage({ params }: AdminEditProductP
     </Card>
   );
 }
-

@@ -43,7 +43,7 @@ export function RegisterForm() {
           </div>
           <div className="space-y-2">
             <label htmlFor="password" className="text-sm font-medium">
-              Contraseña
+              Contrasena
             </label>
             <input
               id="password"
@@ -59,7 +59,7 @@ export function RegisterForm() {
             {isPending ? "Creando cuenta..." : "Registrarme"}
           </Button>
           <p className="text-center text-sm text-muted-foreground">
-            ¿Ya tienes cuenta?{" "}
+            Ya tienes cuenta?{" "}
             <Link href="/login" className="text-primary hover:underline">
               Inicia sesion
             </Link>

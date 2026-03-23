@@ -14,6 +14,8 @@ type CheckoutCancelPageProps = {
   searchParams: Promise<{ order_id?: string }>;
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function CheckoutCancelPage({ searchParams }: CheckoutCancelPageProps) {
   if (!isSupabaseConfigured()) redirect("/login");
   const { order_id: orderId } = await searchParams;
@@ -52,4 +54,3 @@ export default async function CheckoutCancelPage({ searchParams }: CheckoutCance
     </main>
   );
 }
-

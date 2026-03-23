@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { isSupabaseConfigured } from "@/lib/env";
+import { isDatabaseConfigured, isSupabaseConfigured } from "@/lib/env";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { toggleWishlistItem } from "@/services/wishlist.service";
 
@@ -11,6 +11,9 @@ type ToggleWishlistRequest = {
 export async function POST(request: Request) {
   if (!isSupabaseConfigured()) {
     return NextResponse.json({ error: "Auth no configurado." }, { status: 500 });
+  }
+  if (!isDatabaseConfigured()) {
+    return NextResponse.json({ error: "Base de datos no configurada." }, { status: 500 });
   }
 
   const supabase = await createSupabaseServerClient();
@@ -23,7 +26,10 @@ export async function POST(request: Request) {
   const productId = body.productId;
   if (!productId) return NextResponse.json({ error: "Producto invalido." }, { status: 400 });
 
-  const result = await toggleWishlistItem(user.id, productId);
-  return NextResponse.json(result);
+  try {
+    const result = await toggleWishlistItem(user.id, productId);
+    return NextResponse.json(result);
+  } catch {
+    return NextResponse.json({ error: "No se pudo actualizar wishlist." }, { status: 500 });
+  }
 }
-

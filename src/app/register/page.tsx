@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
+
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { RegisterForm } from "@/components/auth/register-form";
+
+export const metadata: Metadata = {
+  title: "Registro",
+  description: "Crea tu cuenta para simular una experiencia ecommerce completa.",
+};
 
 export default function RegisterPage() {
   return (
@@ -13,4 +20,3 @@ export default function RegisterPage() {
     </main>
   );
 }
-

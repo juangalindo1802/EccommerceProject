@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { isStripeConfigured, isSupabaseConfigured } from "@/lib/env";
+import { isDatabaseConfigured, isStripeConfigured, isSupabaseConfigured } from "@/lib/env";
 import { getStripeClient } from "@/lib/stripe";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
@@ -20,6 +20,9 @@ export async function POST(request: Request) {
   }
   if (!isStripeConfigured()) {
     return NextResponse.json({ error: "Stripe no configurado." }, { status: 500 });
+  }
+  if (!isDatabaseConfigured()) {
+    return NextResponse.json({ error: "Base de datos no configurada." }, { status: 500 });
   }
 
   try {
@@ -75,4 +78,3 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "No se pudo iniciar checkout." }, { status: 500 });
   }
 }
-

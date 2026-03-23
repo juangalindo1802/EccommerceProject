@@ -7,7 +7,11 @@ import { loginAction } from "@/app/actions/auth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export function LoginForm() {
+type LoginFormProps = {
+  registered?: boolean;
+};
+
+export function LoginForm({ registered = false }: LoginFormProps) {
   const [state, formAction, isPending] = useActionState(loginAction, {});
 
   return (
@@ -31,7 +35,7 @@ export function LoginForm() {
           </div>
           <div className="space-y-2">
             <label htmlFor="password" className="text-sm font-medium">
-              Contraseña
+              Contrasena
             </label>
             <input
               id="password"
@@ -42,12 +46,18 @@ export function LoginForm() {
               className="h-11 w-full rounded-xl border border-input bg-background px-3 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
             />
           </div>
+          {registered ? (
+            <p className="text-sm text-emerald-700">
+              Cuenta creada. Si tu proyecto exige confirmacion por correo, validala y luego inicia
+              sesion.
+            </p>
+          ) : null}
           {state.error ? <p className="text-sm text-red-600">{state.error}</p> : null}
           <Button type="submit" className="w-full" disabled={isPending}>
             {isPending ? "Ingresando..." : "Ingresar"}
           </Button>
           <p className="text-center text-sm text-muted-foreground">
-            ¿No tienes cuenta?{" "}
+            No tienes cuenta?{" "}
             <Link href="/register" className="text-primary hover:underline">
               Registrate
             </Link>

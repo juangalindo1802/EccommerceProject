@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Admin",
   description: "Panel administrativo de VANTA.TECH",
 };
+export const dynamic = "force-dynamic";
 
 export default async function AdminLayout({
   children,
@@ -37,4 +38,3 @@ export default async function AdminLayout({
     </main>
   );
 }
-
