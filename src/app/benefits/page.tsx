@@ -17,7 +17,7 @@ export default function BenefitsPage() {
       <section className="container pt-10">
         <h1 className="font-display text-4xl tracking-tight md:text-5xl">Beneficios premium</h1>
         <p className="mt-3 max-w-3xl text-sm text-muted-foreground md:text-base">
-          Diseñamos un ecommerce enfocado en confianza, velocidad y calidad para usuarios exigentes.
+          Disenamos un ecommerce enfocado en confianza, velocidad y calidad para usuarios exigentes.
         </p>
       </section>
       <BenefitsSection />
@@ -26,4 +26,3 @@ export default function BenefitsPage() {
     </main>
   );
 }
-

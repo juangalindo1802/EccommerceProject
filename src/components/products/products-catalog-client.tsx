@@ -89,7 +89,7 @@ export function ProductsCatalogClient({ products }: ProductsCatalogClientProps) 
           </p>
         </div>
 
-        <Card className="sticky top-24 z-20 border-border/70 bg-card/95 shadow-lg shadow-black/5 backdrop-blur">
+        <Card className="sticky top-20 z-20 border-border/70 bg-card/95 shadow-lg shadow-black/5 backdrop-blur">
           <CardContent className="grid gap-4 p-4 md:grid-cols-2 lg:grid-cols-4">
             <label className="relative lg:col-span-2">
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -126,7 +126,7 @@ export function ProductsCatalogClient({ products }: ProductsCatalogClientProps) 
               ))}
             </select>
 
-            <div className="flex flex-wrap items-center gap-2 md:col-span-2 lg:col-span-4">
+            <div className="flex items-center gap-2 md:col-span-2 lg:col-span-4">
               <Button
                 variant={onlyAvailable ? "secondary" : "outline"}
                 size="sm"
@@ -138,16 +138,6 @@ export function ProductsCatalogClient({ products }: ProductsCatalogClientProps) 
               <Button variant="ghost" size="sm" onClick={clearFilters}>
                 Limpiar filtros
               </Button>
-              {categoryOptions.slice(0, 4).map((category) => (
-                <Button
-                  key={category.id}
-                  variant={selectedCategory === category.id ? "secondary" : "ghost"}
-                  size="sm"
-                  onClick={() => setSelectedCategory(category.id)}
-                >
-                  {category.name}
-                </Button>
-              ))}
               <p className="ml-auto text-xs text-muted-foreground">
                 {filteredProducts.length} resultado(s)
               </p>

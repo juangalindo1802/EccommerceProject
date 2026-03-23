@@ -27,19 +27,21 @@ export function CartDrawer() {
       ) : null}
 
       <aside
-        className={`fixed right-0 top-0 z-50 h-full w-full max-w-md border-l border-border bg-background/100 shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_24px_56px_rgba(0,0,0,0.35)] transition-transform duration-300 ${
+        className={`fixed right-0 top-0 z-50 h-dvh w-full max-w-md overflow-hidden border-l border-border bg-background shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_24px_56px_rgba(0,0,0,0.35)] transition-transform duration-300 ${
           isDrawerOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex h-full flex-col">
-          <div className="flex items-center justify-between border-b border-border px-5 py-4">
+        <div className="flex h-full min-h-0 flex-col">
+          <div className="shrink-0 border-b border-border bg-background px-5 py-4">
+            <div className="flex items-center justify-between">
             <h2 className="font-display text-2xl">Tu carrito</h2>
             <Button variant="ghost" size="icon" onClick={closeDrawer} aria-label="Cerrar">
               <X className="h-5 w-5" />
             </Button>
+            </div>
           </div>
 
-          <div className="flex-1 space-y-4 overflow-y-auto p-5">
+          <div className="flex-1 space-y-4 overflow-y-auto px-5 py-4">
             {items.length === 0 ? (
               <div className="rounded-2xl border border-dashed border-border p-8 text-center">
                 <ShoppingBag className="mx-auto mb-3 h-8 w-8 text-muted-foreground" />
@@ -92,7 +94,7 @@ export function CartDrawer() {
             )}
           </div>
 
-          <div className="space-y-3 border-t border-border p-5">
+          <div className="shrink-0 space-y-3 border-t border-border bg-background p-5">
             <div className="flex items-center justify-between">
               <p className="text-sm text-muted-foreground">Subtotal</p>
               <p className="font-display text-2xl">${subtotal}</p>
