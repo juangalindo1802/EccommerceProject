@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+
 import { SectionHeading } from "@/components/common/section-heading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { CategoryView } from "@/types/category";
@@ -17,16 +20,21 @@ export function FeaturedCategoriesSection({ categories }: FeaturedCategoriesSect
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {categories.map((category) => (
-            <Card key={category.slug} className="min-h-44 transition-transform hover:-translate-y-1">
-              <CardHeader>
-                <CardTitle className="text-lg">{category.name}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  {category.description ?? "Categoria premium seleccionada"}
-                </p>
-              </CardContent>
-            </Card>
+            <Link key={category.slug} href={`/categories/${category.slug}`}>
+              <Card className="min-h-44 transition-all hover:-translate-y-1 hover:shadow-xl">
+                <CardHeader>
+                  <div className="flex items-start justify-between gap-3">
+                    <CardTitle className="text-lg">{category.name}</CardTitle>
+                    <ArrowUpRight className="h-4 w-4 text-primary" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">
+                    {category.description ?? "Categoria premium seleccionada"}
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>

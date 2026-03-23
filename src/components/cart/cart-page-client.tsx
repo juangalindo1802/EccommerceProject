@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
@@ -8,6 +7,7 @@ import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ImageFallback } from "@/components/ui/image-fallback";
 import { useCartStore } from "@/store/cart-store";
 
 export function CartPageClient() {
@@ -77,7 +77,7 @@ export function CartPageClient() {
             <Card key={item.productId}>
               <CardContent className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center">
                 <div className="relative h-20 w-20 overflow-hidden rounded-lg">
-                  <Image src={item.image} alt={item.name} fill className="object-cover" />
+                  <ImageFallback src={item.image} alt={item.name} fill className="object-cover" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-base font-semibold">{item.name}</p>
@@ -144,4 +144,3 @@ export function CartPageClient() {
     </section>
   );
 }
-

@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 
+import { ImageFallback } from "@/components/ui/image-fallback";
 import { cn } from "@/lib/utils";
 
 type ProductGalleryProps = {
@@ -16,7 +16,7 @@ export function ProductGallery({ name, images }: ProductGalleryProps) {
   return (
     <div className="space-y-4">
       <div className="relative h-[360px] overflow-hidden rounded-3xl border border-border/70 bg-card sm:h-[460px]">
-        <Image src={selectedImage} alt={name} fill className="object-cover" />
+        <ImageFallback src={selectedImage} alt={name} fill className="object-cover" />
       </div>
       <div className="grid grid-cols-3 gap-3">
         {images.map((image, index) => (
@@ -32,11 +32,15 @@ export function ProductGallery({ name, images }: ProductGalleryProps) {
             aria-label={`Vista ${index + 1} de ${name}`}
             type="button"
           >
-            <Image src={image} alt={`${name} vista ${index + 1}`} fill className="object-cover" />
+            <ImageFallback
+              src={image}
+              alt={`${name} vista ${index + 1}`}
+              fill
+              className="object-cover"
+            />
           </button>
         ))}
       </div>
     </div>
   );
 }
-

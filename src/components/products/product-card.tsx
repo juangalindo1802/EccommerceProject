@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Star } from "lucide-react";
 import { toast } from "sonner";
@@ -8,6 +7,7 @@ import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { ImageFallback } from "@/components/ui/image-fallback";
 import { WishlistToggleButton } from "@/components/wishlist/wishlist-toggle-button";
 import { useCartStore } from "@/store/cart-store";
 import type { ProductView } from "@/types/product";
@@ -23,7 +23,7 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="group overflow-hidden">
       <Link href={`/products/${product.slug}`} className="relative block h-56 overflow-hidden">
-        <Image
+        <ImageFallback
           src={product.images[0]?.url ?? "https://images.unsplash.com/photo-1527814050087-3793815479db"}
           alt={product.name}
           fill

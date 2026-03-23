@@ -41,6 +41,13 @@ export async function getCategories(): Promise<CategoryView[]> {
   });
 }
 
+export async function getCategoryBySlug(slug: string): Promise<CategoryView | null> {
+  if (!isDatabaseConfigured()) return null;
+  return prisma.category.findUnique({
+    where: { slug },
+  });
+}
+
 export async function getAllProducts(): Promise<ProductView[]> {
   if (!isDatabaseConfigured()) return [];
   const products = await prisma.product.findMany({
@@ -83,6 +90,16 @@ export async function getRelatedProducts(
     include: productInclude,
     orderBy: [{ rating: "desc" }],
     take: 4,
+  });
+  return products.map(mapProduct);
+}
+
+export async function getProductsByCategorySlug(slug: string): Promise<ProductView[]> {
+  if (!isDatabaseConfigured()) return [];
+  const products = await prisma.product.findMany({
+    where: { category: { slug } },
+    include: productInclude,
+    orderBy: [{ featured: "desc" }, { rating: "desc" }],
   });
   return products.map(mapProduct);
 }

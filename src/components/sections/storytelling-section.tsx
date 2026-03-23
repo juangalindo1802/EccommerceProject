@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function StorytellingSection() {
@@ -8,22 +11,24 @@ export function StorytellingSection() {
           <CardContent className="grid gap-8 p-8 md:grid-cols-2 md:p-12">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-                Storytelling Tecnológico
+                Storytelling tecnologico
               </p>
               <h2 className="mt-4 font-display text-3xl leading-tight md:text-4xl">
-                Diseñamos una experiencia para personas que construyen el futuro.
+                Diseñamos una tienda para personas que construyen el futuro digital.
               </h2>
             </div>
             <div className="space-y-4 text-sm leading-relaxed text-muted-foreground md:text-base">
               <p>
-                VANTA.TECH nace como un concepto de ecommerce que combina rendimiento,
-                estética y enfoque editorial. No vendemos gadgets: curamos herramientas para
-                potenciar la vida digital.
+                VANTA.TECH nace como un concepto ecommerce que mezcla rendimiento, estetica y
+                narrativa visual. No vendemos gadgets, curamos herramientas de trabajo moderno.
               </p>
               <p>
                 Desde estudios creativos hasta oficinas remotas, cada producto fue elegido para
-                elevar setups modernos con identidad propia.
+                elevar setups con identidad propia.
               </p>
+              <Button variant="outline" asChild>
+                <Link href="/story">Leer historia completa</Link>
+              </Button>
             </div>
           </CardContent>
         </Card>

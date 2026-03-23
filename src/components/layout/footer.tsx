@@ -2,16 +2,31 @@ import Link from "next/link";
 
 const footerColumns = [
   {
-    title: "Colecciones",
-    links: ["Audio", "Workstation", "Movilidad", "Streaming"],
+    title: "Explorar",
+    links: [
+      { label: "Catalogo", href: "/products" },
+      { label: "Categorias", href: "/categories" },
+      { label: "Beneficios", href: "/benefits" },
+      { label: "Historia", href: "/story" },
+    ],
   },
   {
-    title: "Compañia",
-    links: ["Nosotros", "Portafolio", "Roadmap", "Contacto"],
+    title: "Cuenta",
+    links: [
+      { label: "Mi cuenta", href: "/account" },
+      { label: "Ordenes", href: "/account/orders" },
+      { label: "Wishlist", href: "/account/wishlist" },
+      { label: "Carrito", href: "/cart" },
+    ],
   },
   {
-    title: "Recursos",
-    links: ["Guías", "Comparativas", "FAQ", "Soporte"],
+    title: "Proyecto",
+    links: [
+      { label: "Admin", href: "/admin" },
+      { label: "Login", href: "/login" },
+      { label: "Registro", href: "/register" },
+      { label: "Inicio", href: "/" },
+    ],
   },
 ];
 
@@ -25,7 +40,7 @@ export function Footer() {
               VANTA<span className="text-primary">.TECH</span>
             </h3>
             <p className="mt-4 text-sm text-muted-foreground">
-              Ecommerce ficticio para portafolio personal enfocado en tecnología premium.
+              Ecommerce ficticio para portafolio personal enfocado en tecnologia premium.
             </p>
           </div>
 
@@ -34,9 +49,9 @@ export function Footer() {
               <h4 className="font-semibold text-foreground">{column.title}</h4>
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                 {column.links.map((link) => (
-                  <li key={link}>
-                    <Link href="#" className="transition-colors hover:text-foreground">
-                      {link}
+                  <li key={link.label}>
+                    <Link href={link.href} className="transition-colors hover:text-foreground">
+                      {link.label}
                     </Link>
                   </li>
                 ))}
@@ -47,7 +62,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-2 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 VANTA.TECH. Proyecto demo para portafolio.</p>
-          <p>Diseño y desarrollo con Next.js, Tailwind, shadcn/ui y Zustand.</p>
+          <p>Diseno y desarrollo con Next.js, Tailwind, shadcn/ui y Zustand.</p>
         </div>
       </div>
     </footer>

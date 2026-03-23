@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { ImageFallback } from "@/components/ui/image-fallback";
 import { useCartStore } from "@/store/cart-store";
 
 export function CartDrawer() {
@@ -20,14 +20,14 @@ export function CartDrawer() {
       {isDrawerOpen ? (
         <button
           aria-label="Cerrar carrito"
-          className="fixed inset-0 z-40 bg-black/35 backdrop-blur-[1px]"
+          className="fixed inset-0 z-40 bg-black/45 backdrop-blur-[2px]"
           onClick={closeDrawer}
           type="button"
         />
       ) : null}
 
       <aside
-        className={`fixed right-0 top-0 z-50 h-full w-full max-w-md border-l border-border bg-background shadow-2xl transition-transform duration-300 ${
+        className={`fixed right-0 top-0 z-50 h-full w-full max-w-md border-l border-border bg-background/100 shadow-[0_0_0_1px_rgba(0,0,0,0.05),0_24px_56px_rgba(0,0,0,0.35)] transition-transform duration-300 ${
           isDrawerOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -50,7 +50,7 @@ export function CartDrawer() {
                 <div key={item.productId} className="rounded-2xl border border-border/70 p-3">
                   <div className="flex gap-3">
                     <div className="relative h-16 w-16 overflow-hidden rounded-lg">
-                      <Image src={item.image} alt={item.name} fill className="object-cover" />
+                      <ImageFallback src={item.image} alt={item.name} fill className="object-cover" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-semibold">{item.name}</p>
@@ -106,4 +106,3 @@ export function CartDrawer() {
     </>
   );
 }
-
